@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #2ec4b6, #219ebc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .box h2 {
+            color: #219ebc;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #219ebc;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #219ebc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #2ec4b6;
+        }
+
+        .link {
+            margin-top: 15px;
+            display: block;
+            color: #219ebc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2><i class="fa-solid fa-right-to-bracket"></i> Login</h2>
+
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password">
+        </div>
+
+        <select id="role" style="width:100%; padding:10px; margin-top:10px;">
+            <option value="" disabled selected>Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="government">Government</option>
+            <option value="victim">Victim</option>
+        </select>
+
+        <button class="btn" onclick="handleLogin()">Login</button>
+
+        <button class="btn" onclick="clearData()" style="background: #dc3545; margin-top: 10px;">Clear All Data</button>
+
+        <button class="btn" onclick="showStoredUsers()" style="background: #28a745; margin-top: 10px;">Show Stored Users</button>
+
+        <a href="register.html" class="link">New user? Register here</a>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        function handleLogin() {
+            const email = document.querySelector('input[placeholder="Email"]').value;
+            const password = document.querySelector('input[placeholder="Password"]').value;
+            const role = document.getElementById("role").value;
+
+            console.log('Login attempt:', { email, password, role });
+
+            if (!email || !password || !role) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            console.log('Stored users:', users);
+
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password && u.role === role);
+            console.log('Found user:', user);
+
+            if (user) {
+                login(role);
+            } else {
+                alert('Invalid credentials. Please check your email, password, and role.');
+            }
+        }
+
+        // Function to clear all stored data (for testing)
+        function clearData() {
+            localStorage.clear();
+            alert('All stored data cleared');
+        }
+
+        // Function to show stored users (for debugging)
+        function showStoredUsers() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.length === 0) {
+                alert('No users stored yet. Please register first.');
+            } else {
+                const userList = users.map(user => `${user.name} (${user.email}) - Role: ${user.role}`).join('\n');
+                alert(`Stored Users:\n\n${userList}`);
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

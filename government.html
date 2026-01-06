@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Government Dashboard</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4fdfc;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(to right, #0077b6, #2ec4b6);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 230px;
+            background: #003049;
+            color: white;
+            height: 100vh;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #2ec4b6;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 30px;
+            width: 100%;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card i {
+            font-size: 30px;
+            color: #2ec4b6;
+        }
+
+        .card h3 {
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .btn {
+            background: #0077b6;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2ec4b6;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h2><i class="fa-solid fa-landmark"></i> Government Dashboard</h2>
+    <button class="btn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+</div>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#"><i class="fa-solid fa-chart-line"></i> Overview</a>
+        <a href="#"><i class="fa-solid fa-user-check"></i> Verify Beneficiaries</a>
+        <a href="#"><i class="fa-solid fa-money-bill-transfer"></i> Distribute Funds</a>
+        <a href="#"><i class="fa-solid fa-file-shield"></i> Audit & Reports</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2>System Overview</h2>
+
+        <div class="cards">
+            <div class="card">
+                <i class="fa-solid fa-users"></i>
+                <h3>Verified Beneficiaries</h3>
+                <p>120+</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>Total Funds Distributed</h3>
+                <p>₹50,00,000</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-shield-check"></i>
+                <h3>Transparency Level</h3>
+                <p>100% On-chain</p>
+            </div>
+        </div>
+
+        <br><br>
+
+        <button class="btn"><i class="fa-solid fa-user-plus"></i> Verify New Beneficiary</button>
+        <button class="btn"><i class="fa-solid fa-wallet"></i> Allocate Funds</button>
+
+    </div>
+</div>
+
+</body>
+</html>
+

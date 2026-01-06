@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #219ebc, #2ec4b6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 380px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .box h2 {
+            color: #219ebc;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #219ebc;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #219ebc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2ec4b6;
+        }
+
+        .link {
+            margin-top: 15px;
+            display: block;
+            color: #219ebc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2><i class="fa-solid fa-user-plus"></i> Register</h2>
+
+    <div class="input-group">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Full Name">
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Email">
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Password">
+    </div>
+
+    <div class="input-group">
+        <i class="fa-solid fa-users"></i>
+        <select>
+            <option value="" disabled selected>Select Role</option>
+            <option value="admin">Admin</option>
+            <option value="government">Government</option>
+            <option value="victim">Victim</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="handleRegister()">Register</button>
+
+    <a href="login.html" class="link">Already registered? Login</a>
+</div>
+
+<script>
+function handleRegister() {
+    const name = document.querySelector('input[placeholder="Full Name"]').value;
+    const email = document.querySelector('input[placeholder="Email"]').value;
+    const password = document.querySelector('input[placeholder="Password"]').value;
+    const role = document.querySelector('select').value;
+
+    if (!name || !email || !password || !role) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    // Get existing users or initialize empty array
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if user already exists
+    if (users.find(user => user.email === email)) {
+        alert('User already exists');
+        return;
+    }
+
+    // Add new user
+    users.push({ name, email, password, role });
+
+    // Save to localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('Registration successful!');
+    window.location.href = 'login.html';
+}
+</script>
+
+</body>
+</html>
+
