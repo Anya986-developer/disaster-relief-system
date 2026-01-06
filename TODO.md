@@ -1,31 +1,49 @@
-# TODO: Make Disaster Relief System Deployable
+index.html
+Landing page of the application
+Provides navigation to Login and Registration pages
+Entry point for users accessing the system
 
-- [x] Update register.html: Add form submission handler to store user data in localStorage
-- [x] Update login.html: Add form submission and validation against localStorage
-- [x] Update victim.html: Add onclick handlers for spend buttons to simulate transactions
-- [x] Update contract.js: Add instructions for filling contract address and ABI placeholders
-- [x] Update auth.js: Enhance with validation logic
-- [x] Add logout functionality to dashboard pages
-- [x] Test pages locally (server running on http://localhost:8000)
-- [x] Provide deployment instructions
+login.html
+User authentication page
+Allows registered users to log in using stored credentials
+Redirects users to role-based dashboards after login
 
-## Deployment Instructions
+register.html
+User registration page
+Collects basic user details and role (Admin / Government / Victim)
+Stores user data in localStorage for prototype-level authentication
 
-### Static Hosting Options:
-1. **GitHub Pages**: Push to GitHub repo, enable Pages in settings
-2. **Netlify**: Drag & drop files or connect GitHub repo
-3. **Vercel**: Connect GitHub repo or upload files
-4. **Firebase Hosting**: Use Firebase CLI to deploy
-5. **Surge**: Use `surge` command to deploy
+admin.html
+Admin dashboard
+Manages system overview and high-level controls
+Intended for monitoring users, funds, and platform activity
 
-### Blockchain Integration:
-- Deploy smart contract to Ethereum testnet/mainnet
-- Update contract.js with deployed address and ABI
-- Users need MetaMask for wallet connection
+government.html
+Government authority dashboard
+Responsible for verifying disaster events and approving fund release
+Acts as a trusted authority in the relief workflow
 
-### Testing:
-- Local server running at http://localhost:8000
-- Test registration, login, and dashboard functionality
-- Verify wallet connection and spend simulations
+victim.html
+Victim dashboard
+Allows beneficiaries to view received aid
+Simulates spending or usage of funds via UI interactions
 
-The system is now fully deployable as a static website!
+auth.js
+Handles authentication logic
+Validates login credentials against stored user data
+Manages session state and logout functionality
+
+wallet.js
+Handles wallet connection logic
+Connects to MetaMask (or simulates wallet interaction)
+Displays connected wallet address to the user
+
+contract.js
+Placeholder for blockchain smart contract integration
+Contains fields for contract address and ABI
+Intended to interact with deployed smart contracts for fund transfers
+
+style.css
+Centralized styling file
+Defines layout, colors, buttons, and responsiveness
+Ensures consistent UI across all pages
