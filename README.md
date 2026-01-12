@@ -30,7 +30,7 @@ The system follows a layered architecture:
 - Deployment: GitHub Pages 
 
 ## Demo
-- Live deployed frontend: [Add deployed link here]
+- Live deployed frontend: [https://youtu.be/WIjf1qgk80g?si=tjvRgbrQ10B_jLEu]
 - Demo video: Submitted as part of the hackathon
 - PPT: Submitted as part of the hackathon
 
